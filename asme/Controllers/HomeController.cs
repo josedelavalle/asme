@@ -10,7 +10,21 @@ namespace asme.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Jose DeLavalle - ASME";
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "ASME Interview App";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "ASME Interview App";
 
             return View();
         }

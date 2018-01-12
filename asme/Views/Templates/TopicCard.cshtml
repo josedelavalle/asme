@@ -1,0 +1,20 @@
+﻿<div class="list-card-container">
+    <div class="list-card pointer-hover" ng-click="goToUrl(item.LinkReadMoreUrl)">
+        <div class="list-card-heading col-xs-12">
+            <span class="list-card-title">{{item.BigHeader}}</span>
+            <div>{{item.LinkCalloutText}}</div>
+        </div>
+        <div class="col-xs-12 list-card-image">
+            <div ng-if="item.Image" class="cardImage" style="background-image: url('https://asme.org{{item.Image}}')"></div>
+            <div ng-if="!item.Image" class="cardImage" style="background-image: url('/Content/images/ASME-Logo-white-border.png');background-size:contain;"></div>
+            <div class="col-xs-12 list-card-date">
+                <span>{{item.Date}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 list-card-info">
+            <div>{{item.Copy}}</div>
+        </div>
+        
+    </div>
+</div>
+
