@@ -73,15 +73,46 @@ function asmeController($scope, $window, $interval, asmeFactory, NgMap) {
     $scope.goToUrl = function (url) {
         $window.open('https://www.asme.org' + url);
     }
+
+    $scope.catSelectionChanged = function () {
+        if (this.topicCategoryFilter.indexOf('All') !== -1) {
+            this.topicCategoryFilter = undefined;
+        }
+    }
+    
+
     $scope.filterTopic = function (val, type) {
-        //filter by first entered search string then by category
+        //filter by first selected categories than by search string
+        console.log(type)
         var returnData = $scope.topics;
+        if ((type) && type.length > 0) {
+            returnData = returnData.filter(function (item) {
+                return type.indexOf(item.LinkCalloutText) !== -1;
+            });
+
+        }
+        
+        //if ((type) && type.length > 0) {
+            
+            //var filtered = people.filter(function (item) {
+            //    return id_filter.indexOf(item.id) !== -1 && item.gender === 'm';
+            //});
+            //returnData = returnData.filter(function (item) {
+            //    return type.filter(function (cat) {
+                    
+            //        return item.LinkCalloutText === cat;
+            //    }).length === 0
+            //});
+            //var newlist = all.filter(function (a) {
+            //    return old.filter(function (o) {
+            //        return o.id == a.id
+            //    }).length == 0
+            //})
+        
         if (val) {
             returnData = returnData.filter(x => x.BigHeader.toLowerCase().indexOf(val.toLowerCase()) > -1 || x.Copy.toLowerCase().indexOf(val.toLowerCase()) > -1);
         }
-        if (type) {
-            returnData = returnData.filter(x => x.LinkCalloutText.indexOf(type) > -1);
-        }
+        $scope.showing = returnData.length;
         return returnData;
     };
     

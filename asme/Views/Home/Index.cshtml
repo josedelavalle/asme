@@ -47,7 +47,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <md-button class="fullwidth margin-0 margin-bottom-20 md-raised md-button md-ink-ripple" ng-click="scrollTo('#content')">
+            <md-button class="fullwidth margin-0 margin-bottom-20 md-raised md-button md-ink-ripple" aria-label="Scroll To Content" ng-click="scrollTo('#content')">
                 <span class="fa fa-chevron-down"></span>
             </md-button>
         </div>
@@ -65,7 +65,7 @@
                     </span>
                 </div>
             </div>*@
-        <md-content class="md-padding">
+        <md-content class="md-padding hidden">
             <md-nav-bar md-no-ink-bar="disableInkBar"
                         md-selected-nav-item="currentNavItem"
                         nav-bar-aria-label="navigation links">
@@ -78,15 +78,17 @@
             <div class="row">
                 <div class="col-xs-12 col-md-4">
                     <md-input-container class="md-block">
-                        <label>Filter topic</label>
+                        <label>Filter articles</label>
                         <input ng-model="topicNameFilter">
                     </md-input-container>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <md-select ng-model="topicCategoryFilter" placeholder="Category">
-                        <md-option value="">All</md-option>
-                        <md-option ng-repeat="cat in topicCategories track by $index" value="{{cat}}">{{cat}}</md-option>
-                    </md-select>
+                    <md-select ng-model="topicCategoryFilter" ng-change="catSelectionChanged()" placeholder="Category" multiple>
+                        <md-optgroup label="Article Categories">
+                            <md-option value="All">All</md-option>
+                            <md-option ng-repeat="cat in topicCategories track by $index" value="{{cat}}">{{cat}}</md-option>
+                        </md-optgroup>
+                </md-select>
                 </div>
                 <div class="col-xs-12 col-md-4">
                     <md-select ng-model="topicSortBy" placeholder="Sort Items">
@@ -101,7 +103,7 @@
                     </md-select>
                 </div>
             </div>
-
+            {{showing}} / {{topics.length}}
             <div class="row cards">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="item in filterTopic(topicNameFilter, topicCategoryFilter) | orderBy: topicSortBy">
                     <topic-card itemid="item"></topic-card>
@@ -110,7 +112,7 @@
         </div>
     </div>
    
-    <md-button class="back-to-top margin-0 margin-top-10 md-raised md-button md-ink-ripple" ng-click="scrollTo('#home')">
+    <md-button class="back-to-top margin-0 margin-top-10 md-raised md-button md-ink-ripple" aria-label="Scroll To Top" ng-click="scrollTo('#home')">
         <span class="fa fa-chevron-up"></span>
     </md-button>
     
