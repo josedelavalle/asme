@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 </head>
-<body>
+<body ng-app="asmeApp" ng-controller="asmeController as vm" ng-cloak>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Jose DeLavalle", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" target="_blank" href="http://portfolio.josedelavalle.com">Jose DeLavalle</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,9 +26,12 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
+            <div class="show-info" ng-show="!showJumbotron">
+                <i class="fa fa-info pointer-hover" ng-click="showJumbotron=true"></i>
+            </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" ng-class="{'padding-0':isMobile}">
         @RenderBody()
         <hr />
         <footer>
@@ -39,6 +42,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places&key=AIzaSyBPsDaLY2SWLxNqHNbZzjkMBgGVisLqFx8"></script>
     @Scripts.Render("~/bundles/angular")
     @RenderSection("scripts", required: false)
     <script>

@@ -39,6 +39,7 @@ namespace asme
                 "~/Scripts/vendor/angular-filter.min.js",
                 "~/Scripts/vendor/angular-material.min.js",
                 "~/Scripts/vendor/ng-map.min.js",
+                "~/Scripts/vendor/ng-google-chart.min.js",
                 "~/Scripts/vendor/loading-bar.js",
                 "~/Scripts/app.js"));
         }

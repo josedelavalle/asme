@@ -1,0 +1,15 @@
+﻿<md-content class="md-padding">
+    <md-nav-bar md-no-ink-bar="disableInkBar"
+                md-selected-nav-item="currentNavItem"
+                nav-bar-aria-label="navigation links">
+        <md-nav-item ng-if="topics" md-nav-click="goTo(1)" name="page1">
+            Articles
+        </md-nav-item>
+        <md-nav-item ng-if="events" md-nav-click="goTo(3)" name="page3">
+            Events
+        </md-nav-item>
+        <md-nav-item ng-if="products" md-nav-click="goTo(2)" name="page2">
+            Products
+        </md-nav-item>
+    </md-nav-bar>
+</md-content>

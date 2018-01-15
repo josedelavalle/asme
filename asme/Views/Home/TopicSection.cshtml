@@ -1,0 +1,48 @@
+﻿<div ng-if="showcard==1" class="card-section" ng-class="{'padding-0': isMobile}">
+    <div class="sticky-section" ng-class="{'position-relative': !sticky}">
+        <div google-chart chart="myTopicChartObject" style="height:{{chartHeight}}; width:100%;"></div>
+        <div class="row filter-controls">
+            <div class="col-sm-12 col-md-4 hidden-xs">
+                <md-input-container class="md-block">
+                    <label>Filter articles</label>
+                    <input ng-model="topicNameFilter">
+                </md-input-container>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <md-select ng-model="topicCategoryFilter" ng-change="catSelectionChanged()" placeholder="Category" multiple>
+                    <md-optgroup label="Article Categories">
+                        <md-option value="All">All</md-option>
+                        <md-option ng-repeat="cat in topicCategories track by $index" value="{{cat}}">{{cat}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <md-select ng-model="topicSortBy" placeholder="Sort Items">
+                    <md-option value="Date">Date Ascending</md-option>
+                    <md-option value="-Date">Date Descending</md-option>
+                    <md-option value="BigHeader">Title Ascending</md-option>
+                    <md-option value="-BigHeader">Title Decending</md-option>
+                    <md-option value="LinkCalloutText">Category Ascending</md-option>
+                    <md-option value="-LinkCalloutText">Category Decending</md-option>
+                    <md-option value="Copy">Description Ascending</md-option>
+                    <md-option value="-Copy">Description Decending</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div ng-show="topics" class="text-center hidden-xs">
+            <md-button ng-click="getMore()" class="margin-left-0">
+                <span class="fa fa-plus"></span>
+                <span>Get More Articles ({{showing}} / {{topics.length}})</span>
+            </md-button>
+        </div>
+        <md-button class="sticky-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !sticky}" aria-label="Fixed Controls" ng-init="sticky=true" ng-click="sticky=!sticky">
+            <div class="fa fa-2x fa-thumb-tack"></div>
+        </md-button>
+
+    </div>
+    <div class="row cards">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-class="{'padding-0':isMobile}" ng-repeat="item in filterTopic(topicNameFilter, topicCategoryFilter) | orderBy: topicSortBy">
+            <topic-card itemid="item"></topic-card>
+        </div>
+    </div>
+</div>

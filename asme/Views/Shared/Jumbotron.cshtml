@@ -1,0 +1,72 @@
+﻿<div class="jumbotron margin-bottom-10" ng-class="{'no-background': !showJumbotron}" ng-init="showsection=0;showJumbotron=true" ng-show="showJumbotron">
+
+    <div>
+        <i class="fa fa-times pointer-hover pull-right" ng-click="showJumbotron=false"></i>
+        <div ng-if="showsection==0">
+
+            <img width="200" src="~/Content/images/ASME-logo-trans.png" alt="American Society of Mechanical Engineers" />
+
+            <div class="appdescription">
+                <p>
+                    &bull;
+                    This is a .NET MVC web app created by me that consumes asme.org data (/asme/handlers/Topics.ashx) with an AngularJs responsive frontend created soley to
+                    show initiative, desire, and capability, in the hopes of gaining employment with ASME,
+                    and should not be interpretted as representative of The American Society of Mechanical Engineers
+                    or any of their affiliates.
+                </p>
+                <p>
+                    &bull;
+                    Output Cache on back-end methods set to 24 hours to minimize their web server load.
+                </p>
+            </div>
+        </div>
+        <div ng-show="showsection==1" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetTopics</h1>
+            <pre>{{topicsPretty}}</pre>
+        </div>
+        <div ng-if="showsection==2" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetProducts</h1>
+            <pre>{{productsPretty}}</pre>
+        </div>
+        <div ng-if="showsection==3" class="display-flex">
+            <span ng-click="showsection=0">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <h1 class="margin-top-0">Data/GetEvents</h1>
+            <pre>{{eventsPretty}}</pre>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=1">
+                    Show Get Topic Response
+                </md-button>
+            </div>
+
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=2">
+                    Show Get Products Response
+                </md-button>
+            </div>
+
+            <div class="col-xs-12 col-md-4">
+                <md-button class="full-width margin-0 md-raised md-button md-ink-ripple" ng-click="showsection=3">
+                    Show Get Events Response
+                </md-button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row" ng-show="showJumbotron">
+    <div class="col-xs-12">
+        <md-button class="full-width margin-0 margin-bottom-20 md-raised md-button md-ink-ripple" aria-label="Scroll To Content" ng-click="scrollTo('#content')">
+            <span class="fa fa-chevron-down"></span>
+        </md-button>
+    </div>
+</div>

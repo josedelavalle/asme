@@ -1,0 +1,36 @@
+﻿<div ng-if="showcard==3" class="card-section" ng-class="{'padding-0': isMobile}">
+    <div class="sticky-section" ng-class="{'position-relative': !sticky}">
+        <ng-map id="big-map" map-initialized="onMapLoaded()" class="map" ng-class="{'small-map': isMobile}" center="10,0" zoom="{{isMobile ? '1' : '2'}}">
+            <heatmap-layer data="heatmapData" id="heatmap"></heatmap-layer>
+            <marker ng-repeat="item in events" 
+                    ng-if="item.Coordinates && showMarkers" 
+                    position="[{{item.Coordinates[0]}},{{item.Coordinates[1]}}]" 
+                    on-click="showDetail(item)"
+                    class="ng-scope" id="marker{{$index}}">
+            </marker>
+            <info-window id="map-iw">
+                <div class="map-iw" ng-non-bindable="">
+                    <h4>{{vm.selectedEvent.Name}}</h4>
+                    <div>Date: {{vm.selectedEvent.Date}}</div>
+                    <div>Location: {{vm.selectedEvent.Location}}</div>
+                    <a href="#" ng-click="goToUrl(vm.selectedEvent.Link, true)">Go To Event Page</a>
+                </div>
+            </info-window>
+        </ng-map>
+        <md-button class="heatmap-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !showHeatmap}" aria-label="Fixed Controls" ng-click="toggleHeatmap()">
+            <div class="fa fa-2x fa-thermometer-full"></div>
+        </md-button>
+        <md-button class="marker-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !showMarkers}" aria-label="Fixed Controls" ng-click="toggleMarkers()">
+            <div class="fa fa-2x fa-map-marker"></div>
+        </md-button>
+        <md-button class="sticky-toggle margin-0 md-raised md-button md-ink-ripple" ng-class="{'sticky-off': !sticky}" aria-label="Fixed Controls" ng-init="sticky=true" ng-click="sticky=!sticky">
+            <div class="fa fa-2x fa-thumb-tack"></div>
+        </md-button>
+    </div>
+    <div class="row cards">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="item in events">
+            <event-card itemid="item"></event-card>
+        </div>
+    </div>
+
+</div>

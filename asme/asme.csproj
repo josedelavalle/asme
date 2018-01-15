@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.6.13.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.13\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -183,7 +186,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\DataModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +196,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fa\font-awesome.css" />
     <Content Include="Content\fa\font-awesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\ASME-logo-trans.png" />
     <Content Include="Content\images\ASME-Logo-white-border.png" />
@@ -243,6 +247,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -257,6 +266,7 @@
     <Content Include="Scripts\vendor\angular-messages.min.js" />
     <Content Include="Scripts\vendor\angular.min.js" />
     <Content Include="Scripts\vendor\loading-bar.js" />
+    <Content Include="Scripts\vendor\ng-google-chart.min.js" />
     <Content Include="Scripts\vendor\ng-map.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -275,10 +285,16 @@
     <Content Include="Views\Templates\TopicCard.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Templates\ProductCard.cshtml" />
+    <Content Include="Views\Templates\EventCard.cshtml" />
+    <Content Include="Views\Shared\Jumbotron.cshtml" />
+    <Content Include="Views\Shared\TabMenu.cshtml" />
+    <Content Include="Views\Home\TopicSection.cshtml" />
+    <Content Include="Views\Home\ProductSection.cshtml" />
+    <Content Include="Views\Home\EventSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\fonts\" />
     <Folder Include="Views\Data\" />
   </ItemGroup>
   <ItemGroup>

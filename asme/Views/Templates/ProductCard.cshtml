@@ -1,0 +1,33 @@
+﻿<div class="list-card-container">
+    <div class="list-card pointer-hover" ng-click="goToUrl(item.NavigateUrl)">
+        <div class="list-card-heading col-xs-12">
+            <span class="list-card-title">{{item.Name}}</span>
+            
+            
+        </div>
+        <div class="col-xs-12 list-card-info">
+            
+            <div ng-if="item.ProductDescription" id="product-details{{$index}}" class="slideable">
+                <div ng-bind-html="item.ProductDescription | trust"></div>
+                @*<div class="short-product-description" ng-if="!item.expanded" ng-bind-html="item.ProductDescription || 'No Product Description' | limitTo: 200 | trust"></div>*@
+            </div>
+            <div class="full-width text-center">
+                <md-button slide-toggle="#product-details{{$index}}" class="margin-bottom-0" aria-label="Expand Description" ng-click="toggleExpanded($event, item)" ng-if="item.ProductDescription.length > 200">
+                    <span ng-show="!item.expanded" class="fa fa-chevron-down"></span>
+                    <span ng-show="item.expanded" class="fa fa-chevron-up"></span>
+                </md-button>
+            </div>
+            <div>
+                Category: {{item.CategoryName}}
+            </div>
+            <div>
+                Publication Year: {{item.ProductYear}}
+            </div>
+            <span ng-repeat="format in item.AvailableFormats">
+                <span class="badge margin-bottom-5">{{format}}</span>
+            </span>
+        </div>
+
+    </div>
+</div>
+

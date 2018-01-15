@@ -12,5 +12,16 @@ namespace asme.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult ProductCard()
+        {
+            return PartialView();
+        }
+
+        public ActionResult EventCard()
+        {
+            return PartialView();
+        }
+
     }
 }

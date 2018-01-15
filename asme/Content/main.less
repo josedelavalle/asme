@@ -11,10 +11,19 @@ body {
     background-repeat: no-repeat;*/
     font-family: 'Roboto', sans-serif;
 }
+
+#home {
+    margin-top: 55px;
+}
 * {
     outline: none !important;
     user-select: none;
     
+}
+
+.display-flex {
+    display: flex;
+    flex-wrap: wrap;
 }
 a, input {
     cursor: pointer;
@@ -34,11 +43,6 @@ img {
 }
 .codeavail {
     font-size: 2em;
-}
-.cardsection {
-    background-color: rgb(250,250,250);
-    border-radius: 6px;
-    padding: 5px 20px;
 }
 .md-button {
     white-space: normal !important;
@@ -131,7 +135,7 @@ md-input-container label, md-select span {
 pre {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 212px;
+    height: 182px;
 }
 .filterInput {
     position: relative;
@@ -206,7 +210,7 @@ pre {
     }
 }
 
-.fullwidth {
+.full-width {
     width: 100%;
 }
 
@@ -217,4 +221,86 @@ pre {
 .big-checkbox {
     width: 20px;
     height: 20px;
+}
+.position-relative {
+    position: relative !important;
+    top: 0 !important;
+}
+
+.sticky-section {
+    margin-top: 5px;
+    position: sticky;
+    top: 50px;
+    z-index: 2 !important;
+    background-color: #fafafa !important;
+
+    md-select, md-input-container {
+        margin-bottom: 0px;
+    }
+
+    .md-errors-spacer {
+        display: none;
+    }
+}
+
+.sticky-toggle, .marker-toggle, .heatmap-toggle {
+    position: absolute;
+    top: 5px;
+    min-width: unset;
+    padding: 5px 10px;
+    border-radius: 50%;
+    z-index: 3;
+}
+.sticky-toggle {
+    right: 5px;
+}
+.marker-toggle {
+    right: 55px;
+}
+.heatmap-toggle {
+    right: 105px;
+}
+
+.filter-controls {
+    margin: 0 !important;
+}
+
+.sticky-off {
+    //background-color: #111111 !important;
+    color: #ddd !important;
+}
+
+.hide-jumbotron {
+    margin-top: 10px;
+}
+
+.no-background {
+    background-color: transparent !important;
+}
+
+.show-info {
+    position: absolute;
+    right: 70px;
+    top: 11px;
+    .fa {
+        color: #ddd;
+        font-size: 2em;
+    }
+}
+.jumbotron {
+    .fa-arrow-left {
+        margin: 17px 10px 0 0;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+}
+.map {
+    padding-bottom: 20px;
+    height: 400px;
+}
+.small-map {
+    height: 350px !important;
+}
+.map-iw {
+    z-index: 4;
 }

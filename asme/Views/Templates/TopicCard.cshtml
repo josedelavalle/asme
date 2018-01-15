@@ -1,5 +1,5 @@
 ﻿<div class="list-card-container">
-    <div class="list-card pointer-hover" ng-click="goToUrl(item.LinkReadMoreUrl)">
+    <div class="list-card pointer-hover" ng-click="goToUrl(item.LinkReadMoreUrl)" ng-class="{'margin-left-0 margin-right-0': $parent.isMobile}">
         <div class="list-card-heading col-xs-12">
             <span class="list-card-title">{{item.BigHeader}}</span>
             <div>{{item.LinkCalloutText}}</div>

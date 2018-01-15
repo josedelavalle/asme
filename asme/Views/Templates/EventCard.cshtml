@@ -1,0 +1,19 @@
+﻿<div class="list-card-container">
+    <div class="list-card pointer-hover" ng-click="goToUrl(item.Link, true)">
+        <div class="list-card-heading col-xs-12">
+            <span class="list-card-title">{{item.Name}}</span>
+        </div>
+        <div class="col-xs-12 list-card-image">
+            <div class="cardImage" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center={{item.Location}}&zoom=11&size=300x300&key=AIzaSyBy34i8mK7IXxcAqmZfOEX70XZtNEt7D7s')"></div>
+            <div class="col-xs-12 list-card-date">
+                <span>{{item.Date}}</span>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 list-card-info text-center">
+            <div>{{item.Location}}</div>
+        </div>
+
+    </div>
+</div>
+

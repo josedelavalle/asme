@@ -2,114 +2,16 @@
     ViewBag.Title = "Jose DeLavalle";
 }
 
-<div id="home" ng-app="asmeApp" ng-controller="asmeController" ng-cloak>
-    <div class="jumbotron margin-bottom-10" ng-init="showsection=0">
-        <div ng-if="showsection==0">
-            <h1 class="margin-top-40">
-                <img width="200" src="~/Content/images/ASME-logo-trans.png" alt="American Society of Mechanical Engineers" />
-            </h1>
-            <div class="appdescription">
-                <p>
-                    &bull;
-                    This is a .NET MVC web app created by me that consumes asme.org data (/asme/handlers/Topics.ashx) and AngularJs responsive frontend created soley to
-                    show initiative, desire, and capability, in the hopes of gaining employment with ASME,
-                    and should not be interpretted as representative of The American Society of Mechanical Engineers
-                    or any of their affiliates.
-                </p>
-                <p>
-                    &bull;
-                    Output Cache on back-end methods set to 24 hours to minimize their web server load.
-                </p>
-            </div>
-        </div>
-        <div ng-show="showsection==1">
-            <h1>Data/GetTopics</h1>
-            <pre>{{topicPretty}}</pre>
-        </div>
-        @*<div ng-if="showsection==2">
-            <h1>Home/GetClients</h1>
-            <pre>{{clientsPretty}}</pre>
-        </div>*@
-        <div class="row text-center">
-            <div class="col-xs-12 col-md-6 text-center" ng-click="showsection=1" ng-show="showsection==0">
-                <md-button class="fullwidth margin-0 md-raised md-button md-ink-ripple">
-                    Show Get Topic Response
-                </md-button>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <span ng-click="showsection=0" ng-show="showsection!=0">
-                    <md-button class="fullwidth margin-0 md-raised md-button md-ink-ripple">
-                        Back
-                    </md-button>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <md-button class="fullwidth margin-0 margin-bottom-20 md-raised md-button md-ink-ripple" aria-label="Scroll To Content" ng-click="scrollTo('#content')">
-                <span class="fa fa-chevron-down"></span>
-            </md-button>
-        </div>
-    </div>
+<div id="home">
+    
+    @{Html.RenderPartial("Jumbotron");}
+    
     <div id="content" ng-init="showcard=1">
-        @*<div class="row margin-bottom-20">
-                <div class="col-xs-12 col-sm-6">
-                    <span ng-click="showcard=1">
-                        <md-button class="fullwidth margin-0 md-raised md-button md-ink-ripple">Their topic</md-button>
-                    </span>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <span ng-click="showcard=2">
-                        <md-button class="fullwidth margin-0 md-raised md-button md-ink-ripple">Their Clients</md-button>
-                    </span>
-                </div>
-            </div>*@
-        <md-content class="md-padding hidden">
-            <md-nav-bar md-no-ink-bar="disableInkBar"
-                        md-selected-nav-item="currentNavItem"
-                        nav-bar-aria-label="navigation links">
-                <md-nav-item md-nav-click="goTo(1)" name="page1">
-                    Articles
-                </md-nav-item>
-            </md-nav-bar>
-        </md-content>
-        <div ng-if="showcard==1" class="cardsection">
-            <div class="row">
-                <div class="col-xs-12 col-md-4">
-                    <md-input-container class="md-block">
-                        <label>Filter articles</label>
-                        <input ng-model="topicNameFilter">
-                    </md-input-container>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <md-select ng-model="topicCategoryFilter" ng-change="catSelectionChanged()" placeholder="Category" multiple>
-                        <md-optgroup label="Article Categories">
-                            <md-option value="All">All</md-option>
-                            <md-option ng-repeat="cat in topicCategories track by $index" value="{{cat}}">{{cat}}</md-option>
-                        </md-optgroup>
-                </md-select>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <md-select ng-model="topicSortBy" placeholder="Sort Items">
-                        <md-option value="Date">Date Ascending</md-option>
-                        <md-option value="-Date">Date Descending</md-option>
-                        <md-option value="BigHeader">Title Ascending</md-option>
-                        <md-option value="-BigHeader">Title Decending</md-option>
-                        <md-option value="LinkCalloutText">Category Ascending</md-option>
-                        <md-option value="-LinkCalloutText">Category Decending</md-option>
-                        <md-option value="Copy">Description Ascending</md-option>
-                        <md-option value="-Copy">Description Decending</md-option>
-                    </md-select>
-                </div>
-            </div>
-            {{showing}} / {{topics.length}}
-            <div class="row cards">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="item in filterTopic(topicNameFilter, topicCategoryFilter) | orderBy: topicSortBy">
-                    <topic-card itemid="item"></topic-card>
-                </div>
-            </div>
-        </div>
+        @{Html.RenderPartial("TabMenu");}
+        @{Html.RenderPartial("TopicSection");}
+        @{Html.RenderPartial("ProductSection");}
+        @{Html.RenderPartial("EventSection");}
+        
     </div>
    
     <md-button class="back-to-top margin-0 margin-top-10 md-raised md-button md-ink-ripple" aria-label="Scroll To Top" ng-click="scrollTo('#home')">
